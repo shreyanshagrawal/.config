@@ -227,7 +227,7 @@ globalkeys = gears.table.join(
     awful.key({ ctrlkey }, "f", function() awful.util.spawn("thunar") end,
               {description = "filemanager", group = "launcher"}),
 --spotify
-    awful.key({ ctrlkey }, "s", function() awful.util.spawn("spotify") end,
+    awful.key({ ctrlkey }, "m", function() awful.util.spawn("spotify") end,
               {description = "spotify", group = "launcher"}),
 --torrent
     awful.key({ modkey }, "q", function() awful.util.spawn("qbittorrent") end,
