@@ -8,6 +8,6 @@ source $HOME/.config/nvim/themes/airline.vim
 source $HOME/.config/nvim/plug-config/rnvimr.vim
 source $HOME/.config/nvim/plug-config/fzf.vim
 source $HOME/.config/nvim/plug-config/dashboard.vim
-source $HOME/.config/nvim/plug-config/telescope.vim
+source $HOME/.config/nvim/plug-config/telescope.lua
 "source $HOME/.config/nvim/plug-config/start-screen.vim
 "source $HOME/.config/nvim/themes/cyberpunk.vim

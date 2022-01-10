@@ -209,7 +209,7 @@ globalkeys = gears.table.join(
               {description = "restore minimized", group = "client"}),
 
     -- Prompt
-    awful.key({ modkey },            "r",     function () awful.util.spawn("rofi -show") end,
+    awful.key({ modkey },            "r",     function () awful.util.spawn("rofi -show-icons -show") end,
               {description = "run rofi", group = "launcher"}),
 -- google
     awful.key({ modkey },            "c",     function () awful.util.spawn("google-chrome-stable") end,
@@ -229,6 +229,12 @@ globalkeys = gears.table.join(
 --spotify
     awful.key({ ctrlkey }, "m", function() awful.util.spawn("spotify") end,
               {description = "spotify", group = "launcher"}),
+--trayer
+    awful.key({ modkey },            "t",     function () awful.util.spawn("trayer") end,
+              {description = "trayer", group = "launcher"}),
+--audiobook
+    awful.key({ modkey },            "a",     function () awful.util.spawn("com.github.geigi.cozy") end,
+              {description = "audiobook", group = "launcher"}),
 --torrent
     awful.key({ modkey }, "q", function() awful.util.spawn("qbittorrent") end,
               {description = "torrent", group = "launcher"})
@@ -405,7 +411,7 @@ awful.rules.rules = {
 client.connect_signal("manage", function (c)
     -- Set the windows at the slave,
     -- i.e. put it at the end of others instead of setting it master.
-    -- if not awesome.startup then awful.client.setslave(c) end
+     if not awesome.startup then awful.client.setslave(c) end
 
     if awesome.startup
       and not c.size_hints.user_position
