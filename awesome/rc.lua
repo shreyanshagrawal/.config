@@ -224,7 +224,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey }, "w", function() awful.util.spawn("nitrogen") end,
               {description = "nitrogen", group = "launcher"}),
 --filemanager
-    awful.key({ ctrlkey }, "f", function() awful.util.spawn("thunar") end,
+    awful.key({ modkey1 }, "f", function() awful.util.spawn("thunar") end,
               {description = "filemanager", group = "launcher"}),
 --spotify
     awful.key({ ctrlkey }, "m", function() awful.util.spawn("spotify") end,
