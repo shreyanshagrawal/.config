@@ -404,7 +404,12 @@ awful.rules.rules = {
           "pop-up",       -- e.g. Google Chrome's (detached) Developer Tools.
         }
       }, properties = { floating = true }},
-
+    {rule = { instance="discord" },
+    properties = {tag = "3"}},
+    {rule = { instance="spotify" },
+    properties = {tag = "5"}},
+    {rule = { instance="google-chrome" },
+    properties = {tag = "2"}},
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- { rule = { class = "Firefox" },
