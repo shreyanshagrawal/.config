@@ -11,3 +11,4 @@ source $HOME/.config/nvim/plug-config/treesitter.lua
 source $HOME/.config/nvim/plug-config/gitsigns.lua
 source $HOME/.config/nvim/plug-config/cmp-config.lua
 source $HOME/.config/nvim/plug-config/nvim-tree.lua
+source $HOME/.config/nvim/lua/user/lsp/init.lua
