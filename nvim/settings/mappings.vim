@@ -1,4 +1,4 @@
-"
+"                                                
 " Better nav for omnicomplete
 inoremap <expr> <c-j> ("\<C-n>")
 inoremap <expr> <c-k> ("\<C-p>")
@@ -40,20 +40,10 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-nnoremap <C-t> :NvimTreeToggle<CR>
 
-nnoremap <Leader>o o<Esc>^Da
+vnoremap <Leader>o o<Esc>^Da
 nnoremap <Leader>O O<Esc>^Da
 nnoremap  <leader>rv :source $MYVIMRC<CR>
-" Find files using Telescope command-line sugar.
-nnoremap <leader>ps :lua require('telescope.builtin').grep_string( { search = vim.fn.input("Grep for > ") } )<cr>
+nnoremap <leader>fw :lua require('telescope.builtin').grep_string( { search = vim.fn.input("Grep for > ") } )<cr>
 nnoremap <leader>ff :lua require'telescope.builtin'.find_files{ hidden = true }<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
-" nnoremap <Leader>fs :lua require'telescope.builtin'.file_browser{ cwd = vim.fn.expand('%:p:h') }<cr>
-nnoremap <leader>fs <cmd>lua require 'telescope'.extensions.file_browser.file_browser( { path = vim.fn.expand('%:p:h') } )<CR>
-nnoremap <Leader>fc :lua require'telescope.builtin'.git_status{}<cr>
-nnoremap <Leader>cb :lua require'telescope.builtin'.git_branches{}<cr>
-nnoremap <leader>fr :lua require'telescope.builtin'.resume{}<CR>
-nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep( { file_ignore_patterns = { '*/.spec.js' } } )<cr>
-" nnoremap <leader>fgi <cmd>lua require('telescope.builtin').live_grep( { file_ignore_patterns = { vim.fn.input("Ignore pattern > ") } } )<cr>
-nnoremap <leader>fgd :lua require'telescope.builtin'.live_grep{ search_dirs = { 'slices/admin' } }
