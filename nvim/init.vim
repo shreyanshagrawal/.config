@@ -6,7 +6,6 @@ source $HOME/.config/nvim/plug-config/dashboard.vim
 source $HOME/.config/nvim/plug-config/telescope.lua
 source $HOME/.config/nvim/plug-config/lualine.lua
 source $HOME/.config/nvim/plug-config/bufferline.lua
-source $HOME/.config/nvim/plug-config/presence.lua
 source $HOME/.config/nvim/plug-config/colorizer.lua
 source $HOME/.config/nvim/plug-config/treesitter.lua
 source $HOME/.config/nvim/plug-config/gitsigns.lua

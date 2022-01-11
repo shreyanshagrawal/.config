@@ -58,7 +58,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'hrsh7th/cmp-path'
     Plug 'hrsh7th/cmp-cmdline'
     Plug 'saadparwaiz1/cmp_luasnip'
-
+    Plug 'hrsh7th/cmp-nvim-lsp'
+    Plug 'hrsh7th/cmp-nvim-lua'
+    
     "Snippets
     Plug  'L3MON4D3/LuaSnip'
     Plug 'rafamadriz/friendly-snippets'
@@ -67,6 +69,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'neovim/nvim-lspconfig'
     Plug 'williamboman/nvim-lsp-installer'
 
-    "Discord Presence
-    Plug 'andweeb/presence.nvim'
+    "ranger
+    Plug 'francoiscabrol/ranger.vim'
+    Plug 'rbgrouleff/bclose.vim'
     call plug#end()
