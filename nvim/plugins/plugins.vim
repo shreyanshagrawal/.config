@@ -19,13 +19,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
-
     
     "Theme
     Plug 'dracula/vim', { 'as': 'dracula' }
-
-    " Stable version of coc
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
     "Start Screen
     Plug 'glepnir/dashboard-nvim'
@@ -37,6 +33,30 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     "BufferLine
     Plug 'akinsho/nvim-bufferline.lua'
 
-    " Keeping up to date with master
-    Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+    "Colorizer
+    Plug 'norcalli/nvim-colorizer.lua'
+
+    "LazyGit 
+    Plug 'kdheepak/lazygit.nvim'
+
+    "Gitsigns
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'lewis6991/gitsigns.nvim'
+
+    " Syntax Highlighting 
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+    Plug 'MaxMEllon/vim-jsx-pretty' " fix indentation in jsx until treesitter can
+    Plug 'jxnblk/vim-mdx-js'
+
+    "Lsp + Autocompletion + Snippets
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'hrsh7th/cmp-nvim-lsp'
+    Plug 'hrsh7th/cmp-buffer'
+    Plug 'hrsh7th/nvim-cmp'
+    Plug 'hrsh7th/cmp-vsnip'
+    Plug 'hrsh7th/vim-vsnip'
+    "ranger
+    Plug 'rbgrouleff/bclose.vim'
+    Plug 'francoiscabrol/ranger.vim'
     call plug#end()
