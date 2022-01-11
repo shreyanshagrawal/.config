@@ -49,13 +49,17 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'MaxMEllon/vim-jsx-pretty' " fix indentation in jsx until treesitter can
     Plug 'jxnblk/vim-mdx-js'
 
-    "Lsp + Autocompletion + Snippets
-    Plug 'neovim/nvim-lspconfig'
-    Plug 'hrsh7th/cmp-nvim-lsp'
-    Plug 'hrsh7th/cmp-buffer'
-    Plug 'hrsh7th/nvim-cmp'
-    Plug 'hrsh7th/cmp-vsnip'
-    Plug 'hrsh7th/vim-vsnip'
+    "cmp plugins
+    Plug 'hrsh7th/nvim-cmp' " -- The completion plugin
+    Plug 'hrsh7th/cmp-buffer' " -- buffer completions
+    Plug 'hrsh7th/cmp-path' " -- path completions
+    Plug 'hrsh7th/cmp-cmdline' " -- cmdline completions
+    Plug 'saadparwaiz1/cmp_luasnip' " -- snippet completions
+
+    "snippets
+    Plug 'L3MON4D3/LuaSnip' "--snippet engine
+    Plug 'rafamadriz/friendly-snippets' " -- a bunch of snippets to use
+
     "ranger
     Plug 'rbgrouleff/bclose.vim'
     Plug 'francoiscabrol/ranger.vim'
