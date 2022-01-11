@@ -56,3 +56,5 @@ volumeicon/
 xfce4/
 yad.conf
 yay/
+
+nvim/autoload/plugged
