@@ -1,1 +1,1 @@
-# .config
+My awseome config
