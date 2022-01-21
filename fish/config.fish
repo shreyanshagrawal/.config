@@ -7,6 +7,7 @@
  alias n='nvim ~/.config/nvim/'
  alias cpu='auto-cpufreq --stats'
  alias clock='tty-clock -ct'
+ alias tt="python3 ~/Documents/timetable.py"
  export EDITOR='nvim'
  export VISUAL='nvim'
  colorscript random
