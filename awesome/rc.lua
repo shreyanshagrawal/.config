@@ -240,10 +240,13 @@ globalkeys = gears.table.join(
               {description = "torrent", group = "launcher"}),
 --screenshot custom
     awful.key({ ctrlkey },            "Print",     function () awful.util.spawn("flameshot gui") end,
+              {description = "printscreen", group = "launcher"}),
+--books
+    awful.key({ modkey },            "b",     function () awful.util.spawn("discord") end,
               {description = "discord", group = "launcher"}),
 --screenshot fullscreen
     awful.key({},            "Print",     function () awful.util.spawn("flameshot screen -c") end,
-              {description = "discord", group = "launcher"})
+              {description = "coustom printscreen", group = "launcher"})
 )
 
 clientkeys = gears.table.join(
