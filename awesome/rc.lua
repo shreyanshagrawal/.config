@@ -242,8 +242,8 @@ globalkeys = gears.table.join(
     awful.key({ ctrlkey },            "Print",     function () awful.util.spawn("flameshot gui") end,
               {description = "printscreen", group = "launcher"}),
 --books
-    awful.key({ modkey },            "b",     function () awful.util.spawn("discord") end,
-              {description = "discord", group = "launcher"}),
+    awful.key({ modkey },            "b",     function () awful.util.spawn("calibre") end,
+              {description = "book", group = "launcher"}),
 --screenshot fullscreen
     awful.key({},            "Print",     function () awful.util.spawn("flameshot screen -c") end,
               {description = "coustom printscreen", group = "launcher"})
