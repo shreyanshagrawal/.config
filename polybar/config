@@ -378,7 +378,7 @@ exec = echo ""
 click-left = "xdotool key --clearmodifiers Super_L+5"
 [module/6]
 type = custom/script
-exec = echo "⭘"
+exec = echo ""
 click-left = "xdotool key --clearmodifiers Super_L+6"
 [module/7]
 type = custom/script

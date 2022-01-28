@@ -307,6 +307,16 @@ for i = 1, 9 do
                         end
                   end,
                   {description = "view tag #"..i, group = "tag"}),
+              -- books
+              awful.key({modkey1},  "b",
+                  function ()
+                        local screen = awful.screen.focused()
+                        local books = screen.tags[6]
+                        if books then
+                           books:view_only()
+                        end
+                  end,
+                  {description = "toggle to screen 6 books", group = "tag"}),
         -- Toggle tag display.
         awful.key({ modkey, "Control" }, "#" .. i + 9,
                   function ()
@@ -412,7 +422,10 @@ awful.rules.rules = {
     properties = {tag = "5"}},
     {rule = { instance="google-chrome" },
     properties = {tag = "2"}},
-
+    {rule = { instance="calibre-gui" },
+    properties = {tag = "6"}},
+    {rule = { instance="com.github.geigi.cozy" },
+    properties = {tag = "6"}},
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { screen = 1, tag = "2" } },
