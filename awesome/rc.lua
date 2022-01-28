@@ -232,7 +232,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey },            "t",     function () awful.util.spawn("trayer") end,
               {description = "trayer", group = "launcher"}),
 --audiobook
-    awful.key({ modkey },            "a",     function () awful.util.spawn("com.github.geigi.cozy") end,
+    awful.key({ modkey },            "a",     function () awful.util.spawn("alacritty  --class book,books -e ranger /run/media/shreyansh/SlowStorage/Audiobooks/") end,
               {description = "audiobook", group = "launcher"}),
 --torrent
     awful.key({ modkey }, "q", function() awful.util.spawn("qbittorrent") end,
@@ -422,7 +422,7 @@ awful.rules.rules = {
     properties = {tag = "5"}},
     {rule = { instance="google-chrome" },
     properties = {tag = "2"}},
-    {rule = { instance="calibre-gui" },
+    {rule = { class="books" },
     properties = {tag = "6"}},
     {rule = { instance="com.github.geigi.cozy" },
     properties = {tag = "6"}},
