@@ -424,7 +424,7 @@ awful.rules.rules = {
     properties = {tag = "2"}},
     {rule = { class="books" },
     properties = {tag = "6"}},
-    {rule = { instance="com.github.geigi.cozy" },
+    {rule = { instance="calibre-gui" },
     properties = {tag = "6"}},
     -- Set Firefox to always map on the tag named "2" on screen 1.
     -- { rule = { class = "Firefox" },
