@@ -214,7 +214,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey },            "c",     function () awful.util.spawn("google-chrome-stable") end,
               {description = "google", group = "launcher"}),
 --discord
-    awful.key({ modkey },            "d",     function () awful.util.spawn("discord") end,
+    awful.key({ modkey },            "d",     function () awful.util.spawn("flatpak run com.discordapp.Discord") end,
               {description = "discord", group = "launcher"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
@@ -232,7 +232,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey },            "t",     function () awful.util.spawn("trayer") end,
               {description = "trayer", group = "launcher"}),
 --audiobook
-    awful.key({ modkey },            "a",     function () awful.util.spawn("alacritty  --class book,books -e ranger /run/media/shreyansh/SlowStorage/Audiobooks/") end,
+    awful.key({ modkey },            "a",     function () awful.util.spawn("alacritty  --class book,books -e ranger /media/SlowStorage/Audiobooks/") end,
               {description = "audiobook", group = "launcher"}),
 --torrent
     awful.key({ modkey }, "q", function() awful.util.spawn("qbittorrent") end,
@@ -317,6 +317,42 @@ for i = 1, 9 do
                         end
                   end,
                   {description = "toggle to screen 6 books", group = "tag"}),
+              awful.key({modkey1},  "g",
+                  function ()
+                        local screen = awful.screen.focused()
+                        local books = screen.tags[2]
+                        if books then
+                           books:view_only()
+                        end
+                  end,
+                  {description = "toggle to screen 2 google", group = "tag"}),
+              awful.key({modkey1},  "d",
+                  function ()
+                        local screen = awful.screen.focused()
+                        local books = screen.tags[3]
+                        if books then
+                           books:view_only()
+                        end
+                  end,
+                  {description = "toggle to screen 3 discord", group = "tag"}),
+              awful.key({modkey1},  "m",
+                  function ()
+                        local screen = awful.screen.focused()
+                        local books = screen.tags[4]
+                        if books then
+                           books:view_only()
+                        end
+                  end,
+                  {description = "toggle to screen 4 media", group = "tag"}),
+              awful.key({modkey1},  "s",
+                  function ()
+                        local screen = awful.screen.focused()
+                        local books = screen.tags[5]
+                        if books then
+                           books:view_only()
+                        end
+                  end,
+                  {description = "toggle to screen 5 spotify", group = "tag"}),
         -- Toggle tag display.
         awful.key({ modkey, "Control" }, "#" .. i + 9,
                   function ()
