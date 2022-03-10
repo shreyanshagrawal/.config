@@ -17,6 +17,8 @@ monitor = ${env:MONITOR}
 width = 100%
 height = 20
 fixed-center = true
+bottom = flase
+offset-x = 10
 
 background = ${colors.background}
 foreground = ${colors.foreground}
