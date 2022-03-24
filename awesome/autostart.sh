@@ -36,6 +36,6 @@ run nitrogen --restore
 run light-locker --lock-on-suspend
 run optimus-manager-qt
 run redshift -l 20.5937:78.9629  -t 4500k:4500K
-run ~/.config/polybar/launch.sh
+#run ~/.config/polybar/launch.sh
 run flameshot
 run play-with-mpv 

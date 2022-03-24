@@ -7,9 +7,11 @@ local gears = require("gears")
 local awful = require("awful")
 require("awful.autofocus")
 -- Widget and layout library
+local lain = require("lain")
 local wibox = require("wibox")
 -- Theme handling library
 local beautiful = require("beautiful")
+local dpi   = require("beautiful.xresources").apply_dpi
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
@@ -44,8 +46,29 @@ end
 -- }}}
 
 -- {{{ Variable definitions
+local themes = {
+    "blackburn",       -- 1
+    "copland",         -- 2
+    "dremora",         -- 3
+    "holo",            -- 4
+    "multicolor",      -- 5
+    "powerarrow",      -- 6
+    "powerarrow-dark", -- 7
+    "rainbow",         -- 8
+    "steamburn",       -- 9
+    "vertex"           -- 10
+}
+
+local chosen_theme = themes[5]
+local modkey       = "Mod4"
+local altkey       = "Mod1"
+local terminal     = "urxvtc"
+local vi_focus     = false -- vi-like client focus https://github.com/lcpz/awesome-copycats/issues/275
+local cycle_prev   = true  -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
+local editor       = os.getenv("EDITOR") or "nvim"
+local browser      = "librewolf"
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+beautiful.init(string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme))
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
@@ -91,6 +114,7 @@ myawesomemenu = {
    { "restart", awesome.restart },
    { "quit", function() awesome.quit() end },
 }
+local markup = lain.util.markup
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
                                     { "open terminal", terminal }
@@ -109,7 +133,7 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+mytextclock = wibox.widget.textclock(markup("#7788af", "%A %d %B ") .. markup("#ab7367", ">") .. markup("#de5e1e", " %H:%M "))
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -150,6 +174,161 @@ local tasklist_buttons = gears.table.join(
                      awful.button({ }, 5, function ()
                                               awful.client.focus.byidx(-1)
                                           end))
+
+--ICONS--
+
+local HOME = os.getenv("HOME")
+local icons = {}
+
+icons.widget_temp                               = HOME.."/.config/awesome/themes/multicolor/icons/temp.png"
+icons.widget_uptime                             = HOME.."/.config/awesome/themes/multicolor/icons/ac.png"
+icons.widget_cpu                                = HOME.."/.config/awesome/themes/multicolor/icons/cpu.png"
+icons.widget_weather                            = HOME.."/.config/awesome/themes/multicolor/icons/dish.png"
+icons.widget_fs                                 = HOME.."/.config/awesome/themes/multicolor/icons/fs.png"
+icons.widget_mem                                = HOME.."/.config/awesome/themes/multicolor/icons/mem.png"
+icons.widget_note                               = HOME.."/.config/awesome/themes/multicolor/icons/note.png"
+icons.widget_note_on                            = HOME.."/.config/awesome/themes/multicolor/icons/note_on.png"
+icons.widget_netdown                            = HOME.."/.config/awesome/themes/multicolor/icons/net_down.png"
+icons.widget_netup                              = HOME.."/.config/awesome/themes/multicolor/icons/net_up.png"
+icons.widget_mail                               = HOME.."/.config/awesome/themes/multicolor/icons/mail.png"
+icons.widget_batt                               = HOME.."/.config/awesome/themes/multicolor/icons/bat.png"
+icons.widget_clock                              = HOME.."/.config/awesome/themes/multicolor/icons/clock.png"
+icons.widget_vol                                = HOME.."/.config/awesome/themes/multicolor/icons/spkr.png"
+icons.taglist_squares_sel                       = HOME.."/.config/awesome/themes/multicolor/icons/square_a.png"
+icons.layout_tile                               = HOME.."/.config/awesome/themes/multicolor/icons/tile.png"
+icons.layout_tilegaps                           = HOME.."/.config/awesome/themes/multicolor/icons/tilegaps.png"
+icons.layout_tileleft                           = HOME.."/.config/awesome/themes/multicolor/icons/tileleft.png"
+icons.layout_tilebottom                         = HOME.."/.config/awesome/themes/multicolor/icons/tilebottom.png"
+icons.layout_tiletop                            = HOME.."/.config/awesome/themes/multicolor/icons/tiletop.png"
+icons.layout_fairv                              = HOME.."/.config/awesome/themes/multicolor/icons/fairv.png"
+icons.layout_fairh                              = HOME.."/.config/awesome/themes/multicolor/icons/fairh.png"
+icons.layout_spiral                             = HOME.."/.config/awesome/themes/multicolor/icons/spiral.png"
+icons.layout_dwindle                            = HOME.."/.config/awesome/themes/multicolor/icons/dwindle.png"
+icons.layout_max                                = HOME.."/.config/awesome/themes/multicolor/icons/max.png"
+icons.layout_fullscreen                         = HOME.."/.config/awesome/themes/multicolor/icons/fullscreen.png"
+icons.layout_magnifier                          = HOME.."/.config/awesome/themes/multicolor/icons/magnifier.png"
+icons.layout_floating                           = HOME.."/.config/awesome/themes/multicolor/icons/floating.png"
+icons.titlebar_close_button_normal              = HOME.."/.config/awesome/themes/multicolor/icons/titlebar/close_normal.png"
+icons.titlebar_close_button_focus               = HOME.."/.config/awesome/themes/multicolor/icons/titlebar/close_focus.png"
+icons.titlebar_minimize_button_normal           = HOME.."/.config/awesome/themes/multicolor/icons/titlebar/minimize_normal.png"
+icons.titlebar_minimize_button_focus            = HOME.."/.config/awesome/themes/multicolor/icons/titlebar/minimize_focus.png"
+icons.titlebar_ontop_button_normal_inactive     = HOME.."/.config/awesome/themes/multicolor/icons/titlebar/ontop_normal_inactive.png"
+icons.titlebar_ontop_button_focus_inactive      = HOME.."/.config/awesome/themes/multicolor/icons/titlebar/ontop_focus_inactive.png"
+icons.titlebar_ontop_button_normal_active       = HOME.."/.config/awesome/themes/multicolor/icons/titlebar/ontop_normal_active.png"
+icons.titlebar_ontop_button_focus_active        = HOME.."/.config/awesome/themes/multicolor/icons/titlebar/ontop_focus_active.png"
+icons.titlebar_sticky_button_normal_inactive    = HOME.."/.config/awesome/themes/multicolor/icons/titlebar/sticky_normal_inactive.png"
+icons.titlebar_sticky_button_focus_inactive     = HOME.."/.config/awesome/themes/multicolor/icons/titlebar/sticky_focus_inactive.png"
+icons.titlebar_sticky_button_normal_active      = HOME.."/.config/awesome/themes/multicolor/icons/titlebar/sticky_normal_active.png"
+icons.titlebar_sticky_button_focus_active       = HOME.."/.config/awesome/themes/multicolor/icons/titlebar/sticky_focus_active.png"
+icons.titlebar_floating_button_normal_inactive  = HOME.."/.config/awesome/themes/multicolor/icons/titlebar/floating_normal_inactive.png"
+icons.titlebar_floating_button_focus_inactive   = HOME.."/.config/awesome/themes/multicolor/icons/titlebar/floating_focus_inactive.png"
+icons.titlebar_floating_button_normal_active    = HOME.."/.config/awesome/themes/multicolor/icons/titlebar/floating_normal_active.png"
+icons.titlebar_floating_button_focus_active     = HOME.."/.config/awesome/themes/multicolor/icons/titlebar/floating_focus_active.png"
+icons.titlebar_maximized_button_normal_inactive = HOME.."/.config/awesome/themes/multicolor/icons/titlebar/maximized_normal_inactive.png"
+icons.titlebar_maximized_button_focus_inactive  = HOME.."/.config/awesome/themes/multicolor/icons/titlebar/maximized_focus_inactive.png"
+icons.titlebar_maximized_button_normal_active   = HOME.."/.config/awesome/themes/multicolor/icons/titlebar/maximized_normal_active.png"
+icons.titlebar_maximized_button_focus_active    = HOME.."/.config/awesome/themes/multicolor/icons/titlebar/maximized_focus_active.png"
+icons.taglist_squares_unsel                     = HOME.."/.config/awesome/themes/multicolor/icons/square_b.png"
+icons.font                                      = "Terminus 8"
+icons.fg_normal                                 = "#aaffff"
+
+--WIDGET--
+
+local cpuicon = wibox.widget.imagebox(icons.widget_cpu)
+local cpu = lain.widget.cpu({
+    settings = function()
+        widget:set_markup(markup.fontfg(icons.font, "#e33a6e", cpu_now.usage .. "% "))
+    end
+})
+
+-- Coretemp
+local tempicon = wibox.widget.imagebox(icons.widget_temp)
+local temp = lain.widget.temp({
+    settings = function()
+        widget:set_markup(markup.fontfg(icons.font, "#f1af5f", coretemp_now .. "°C "))
+    end
+})
+
+-- Battery
+local baticon = wibox.widget.imagebox(icons.widget_batt)
+local bat = lain.widget.bat({
+    settings = function()
+        local perc = bat_now.perc ~= "N/A" and bat_now.perc .. "%" or bat_now.perc
+
+        if bat_now.ac_status == 1 then
+            perc = perc .. " plug"
+        end
+
+        widget:set_markup(markup.fontfg(icons.font, icons.fg_normal, perc .. " "))
+    end
+})
+
+-- ALSA volume
+local volicon = wibox.widget.imagebox(icons.widget_vol)
+local volume = lain.widget.alsa({
+    settings = function()
+        if volume_now.status == "off" then
+            volume_now.level = volume_now.level .. "M"
+        end
+
+        widget:set_markup(markup.fontfg(icons.font, "#7493d2", volume_now.level .. "% "))
+    end
+})
+
+-- Net
+local netdownicon = wibox.widget.imagebox(icons.widget_netdown)
+local netdowninfo = wibox.widget.textbox()
+local netupicon = wibox.widget.imagebox(icons.widget_netup)
+local netupinfo = lain.widget.net({
+    settings = function()
+        --[[ uncomment if using the weather widget
+        if iface ~= "network off" and
+           string.match(theme.weather.widget.text, "N/A")
+        then
+            theme.weather.update()
+        end
+        --]]
+
+        widget:set_markup(markup.fontfg(icons.font, "#e54c62", net_now.sent .. " "))
+        netdowninfo:set_markup(markup.fontfg(icons.font, "#87af5f", net_now.received .. " "))
+    end
+})
+
+-- MEM
+local memicon = wibox.widget.imagebox(icons.widget_mem)
+local memory = lain.widget.mem({
+    settings = function()
+        widget:set_markup(markup.fontfg(icons.font, "#e0da37", mem_now.used .. "M "))
+    end
+})
+
+-- MPD
+local mpdicon = wibox.widget.imagebox()
+local mpd = lain.widget.mpd({
+    settings = function()
+        mpd_notification_preset = {
+            text = string.format("%s [%s] - %s\n%s", mpd_now.artist,
+                   mpd_now.album, mpd_now.date, mpd_now.title)
+        }
+
+        if mpd_now.state == "play" then
+            artist = mpd_now.artist .. " > "
+            title  = mpd_now.title .. " "
+            mpdicon:set_image(icons.widget_note_on)
+        elseif mpd_now.state == "pause" then
+            artist = "mpd "
+            title  = "paused "
+        else
+            artist = ""
+            title  = ""
+            --mpdicon:set_image() -- not working in 4.0
+            mpdicon._private.image = nil
+            mpdicon:emit_signal("widget::redraw_needed")
+            mpdicon:emit_signal("widget::layout_changed")
+        end
+        widget:set_markup(markup.fontfg(icons.font, "#e54c62", artist) .. markup.fontfg(icons.font, "#b2b2b2", title))
+    end
+})
 
 local function set_wallpaper(s)
     -- Wallpaper
@@ -210,9 +389,21 @@ awful.screen.connect_for_each_screen(function(s)
         },
         { -- middle widget
             layout = wibox.layout.fixed.horizontal,
+            mpdicon,
+            mpd.widget,
         }, 
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
+            baticon,
+            bat.widget,
+            volicon,
+            volume.widget,
+            memicon,
+            memory.widget,
+            tempicon,
+            temp.widget,
+            cpuicon,
+            cpu.widget,
             mytextclock,
         },
     }
@@ -317,7 +508,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey1 }, "f", function() awful.util.spawn("thunar") end,
               {description = "filemanager", group = "launcher"}),
 --spotify
-    awful.key({ ctrlkey }, "m", function() awful.util.spawn("spotify") end,
+    awful.key({ ctrlkey }, "m", function() awful.util.spawn("spotify ") end,
               {description = "spotify", group = "launcher"}),
 --trayer
     awful.key({ modkey },            "t",     function () awful.util.spawn("trayer") end,
