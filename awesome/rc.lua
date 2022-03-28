@@ -330,6 +330,12 @@ local mpd = lain.widget.mpd({
     end
 })
 
+--spotify
+
+local spotify_widget = require("awesome-wm-widgets.spotify-widget.spotify")
+
+
+
 local function set_wallpaper(s)
     -- Wallpaper
     if beautiful.wallpaper then
@@ -381,19 +387,28 @@ awful.screen.connect_for_each_screen(function(s)
 
     -- Add widgets to the wibox
     s.mywibox:setup {
-        layout = wibox.layout.align.horizontal,
+       layout = wibox.layout.align.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
             s.mytaglist,
             s.mypromptbox,
         },
         { -- middle widget
-            layout = wibox.layout.fixed.horizontal,
-            mpdicon,
-            mpd.widget,
+            layout = wibox.layout.flex.horizontal,
+
         }, 
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
+            
+            spotify_widget({
+                font = 'Ubuntu Mono 9',
+                play_icon = '/usr/share/icons/Papirus-Light/24x24/categories/spotify.svg',
+                pause_icon = '/usr/share/icons/Papirus-Dark/24x24/panel/spotify-indicator.svg',
+                dim_when_paused = true,
+                dim_opacity = 0.5,
+                max_length = -1,
+                show_tooltip = false
+            }),
             baticon,
             bat.widget,
             volicon,
@@ -767,6 +782,7 @@ end)
 
 
 
+beautiful.border_focus = "#ffa0a0"
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
