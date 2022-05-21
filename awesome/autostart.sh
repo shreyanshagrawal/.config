@@ -10,6 +10,7 @@ function run {
 #run xrandr --output VGA-1 --primary --mode 1360x768 --pos 0x0 --rotate normal
 #run xrandr --output HDMI2 --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output VIRTUAL1 --off
 #autorandr horizontal
+run plaympeg ~/Music/startup.mp3
 run nm-applet
 #run caffeine
 run picom -b --config ~/.config/picom.conf
@@ -39,3 +40,4 @@ run redshift -l 20.5937:78.9629  -t 4500k:4500K
 #run ~/.config/polybar/launch.sh
 run flameshot
 run play-with-mpv 
+run qbittorrent 
