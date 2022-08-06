@@ -511,7 +511,7 @@ globalkeys = gears.table.join(
     awful.key({ modkey },            "c",     function () awful.util.spawn("google-chrome-stable") end,
               {description = "google", group = "launcher"}),
 --discord
-    awful.key({ modkey },            "d",     function () awful.util.spawn("flatpak run com.discordapp.Discord") end,
+    awful.key({ modkey },            "d",     function () awful.util.spawn("discord") end,
               {description = "discord", group = "launcher"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,

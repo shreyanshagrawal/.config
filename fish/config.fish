@@ -1,6 +1,7 @@
      # Commands to run in interactive sessions can go here
  set fish_greeting
  alias tmux='tmux -u'
+ alias timed='timedatectl set-ntp true'
  alias al='nvim ~/.config/alacritty/alacritty.yml'
  alias books='alacritty -e ranger /run/media/shreyansh/New\ Volume/Audiobooks/'
  alias aw='nvim ~/.config/awesome/rc.lua'
